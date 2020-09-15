@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Like;
 use App\Models\Question;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -41,5 +42,10 @@ class User extends Authenticatable
     public function question()
     {
         return $this->hasMany(Question::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 }

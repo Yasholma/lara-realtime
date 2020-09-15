@@ -10,3 +10,7 @@ Route::apiResource('/categories', 'CategoryController');
 
 // Replies
 Route::apiResource('/questions/{question}/replies', 'ReplyController');
+
+// Likes
+Route::post('/replies/{reply}/like', 'LikeController@like');
+Route::delete('/replies/{reply}/like', 'LikeController@unlike');

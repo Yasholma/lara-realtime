@@ -4,6 +4,10 @@ window.Vue = require("vue");
 import Vuetify from "vuetify";
 import VueRouter from "vue-router";
 import router from "./routes/routes";
+import axios from "axios";
+import User from "./helpers/User";
+
+axios.defaults.baseURL = "/api/";
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);

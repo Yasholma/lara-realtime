@@ -1,12 +1,21 @@
 import Token from "./Token";
 import AppStorage from "./AppStorage";
 class User {
-    login(credentials) {
-        axios
-            .post("auth/login", credentials)
+    async login(credentials) {
+        await axios
+            .post("auth/login", { ...credentials })
             .then(res => this.responseAfterLogin(res))
             .catch(err => {
-                console.log(err);
+                return Promise.reject(err);
+            });
+    }
+
+    async register(credentials) {
+        return await axios
+            .post("auth/register", { ...credentials })
+            .then(res => this.responseAfterLogin(res))
+            .catch(err => {
+                return Promise.reject(err);
             });
     }
 
@@ -14,6 +23,7 @@ class User {
         const { access_token, user: username } = res.data;
         if (Token.isValid(access_token)) {
             AppStorage.storeData(username, access_token);
+            window.location = "/forum";
         }
     }
 
@@ -31,6 +41,7 @@ class User {
 
     logout() {
         AppStorage.clearData();
+        window.location = "/forum ";
     }
 
     name() {

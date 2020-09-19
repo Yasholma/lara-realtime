@@ -5,12 +5,13 @@ import Vuetify from "vuetify";
 import VueRouter from "vue-router";
 import router from "./routes/routes";
 import axios from "axios";
-import User from "./helpers/User";
 
 axios.defaults.baseURL = "/api/";
 
 Vue.use(VueRouter);
 Vue.use(Vuetify);
+
+window.EventBus = new Vue();
 
 Vue.component("AppHome", require("./components/AppHome.vue").default);
 

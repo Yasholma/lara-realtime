@@ -56,6 +56,10 @@ class User {
             return payload.sub;
         }
     }
+
+    ownsQuestion(questionUId) {
+        return this.id() === questionUId;
+    }
 }
 
 export default new User();

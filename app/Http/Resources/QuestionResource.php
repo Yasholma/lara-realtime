@@ -14,7 +14,6 @@ class QuestionResource extends JsonResource
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
         return [
             'id' => $this->id,
             'title' => $this->title,
@@ -23,7 +22,9 @@ class QuestionResource extends JsonResource
             'slug' => $this->slug,
             'created_at' => $this->created_at->diffForHumans(),
             'user' => $this->user->name,
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
+            'replies' => ReplyResource::collection($this->replies),
+            'reply_count' => $this->replies->count()
         ];
     }
 }

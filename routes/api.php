@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Support\Facades\Route;
 
 // Questions
@@ -19,10 +20,15 @@ Route::delete('/replies/{reply}/like', 'LikeController@unlike');
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-], function ($router) {
+], function () {
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
 });
+
+
+// Notifications
+Route::post('/notifications', 'NotificationController@index');
+Route::post('/markAsRead', 'NotificationController@markAsRead');

@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Illuminate\Support\Str;
 
-class CategoryResource extends JsonResource
+class NotificationResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,8 +16,9 @@ class CategoryResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'slug' => Str::slug($this->name)
+            'reply_by' => $this->data['reply_by'],
+            'question' => $this->data['question'],
+            'path' => $this->data['path']
         ];
     }
 }

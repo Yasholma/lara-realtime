@@ -60,6 +60,10 @@ class User {
     ownsQuestion(questionUId) {
         return this.id() === questionUId;
     }
+
+    ownsReply(replyUId) {
+        return this.id() === replyUId;
+    }
 }
 
 export default new User();
